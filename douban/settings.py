@@ -54,7 +54,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    # 'douban.middlewares.DoubanDownloaderMiddleware': 543,
-   'douban.middlewares.CamouflageIP': 543,
+   # 'douban.middlewares.CamouflageIP': 543,
    'douban.middlewares.CamouflageUserAgent': 544,
 }
 

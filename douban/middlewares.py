@@ -111,7 +111,7 @@ class CamouflageIP(object):
         request.meta['proxy'] = 'http-cla.abuyun.com:9030'
         proxy_name_password = b'H211EATS6876C:F838JGJ7H8S9A7'
         encode_name_password = base64.b64encode(proxy_name_password)
-        request.heeaders['Proxy-Authorization'] = 'Basic ' + encode_name_password.decode()
+        request.headers['Proxy-Authorization'] = 'Basic ' + encode_name_password.decode()
 
 
 # camouflage userAgent
@@ -133,4 +133,4 @@ class CamouflageUserAgent(object):
         ]
         # 随机生成user agent
         user_agent = random.choice(USER_AGENT_LIST)
-        request.heeaders['User_Agent'] = user_agent
+        request.headers['User_Agent'] = user_agent

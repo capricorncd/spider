@@ -42,10 +42,16 @@ Install MongoDB Community Edition on macOS
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
 
+Mac 启动链接数据库
+
+```
+mongod --config /usr/local/etc/mongod.conf --fork
+```
+
 Mac 查看数据库自动创建/添加的内容
 
 ```
-mongod
+mongo
 
 > show dbs
 admin   0.000GB
