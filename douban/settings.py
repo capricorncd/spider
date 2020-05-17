@@ -68,7 +68,12 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'douban.pipelines.DoubanPipeline': 300,
+   # 开启文件下载管道
+   'scrapy.pipelines.files.FilesPipeline': 1
 }
+
+# 文件存储目录
+FILES_STORE = './files'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

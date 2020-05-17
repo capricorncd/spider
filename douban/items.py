@@ -17,5 +17,7 @@ class DoubanItem(scrapy.Item):
     star = scrapy.Field()
     evaluate = scrapy.Field()
     describe = scrapy.Field()
+    # 需要下载的文件list
+    file_urls = scrapy.Field()
 
 

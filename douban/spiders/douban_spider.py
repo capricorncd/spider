@@ -21,14 +21,23 @@ class DoubanSpiderSpider(scrapy.Spider):
         for li in movie_list:
             item = DoubanItem()
             item['serial_number'] = li.xpath('.//div[@class="item"]//em/text()').extract_first()
-            item['movie_name'] = li.xpath('.//div[@class="info"]//div[@class="hd"]//a//span/text()').extract_first()
+            # movie name
+            movie_names = li.xpath('.//div[@class="info"]//div[@class="hd"]//a//span/text()').extract()
+            item['movie_name'] = []
+            for n in movie_names:
+                item['movie_name'].append(' '.join(n.split()))
+            # contents
             contents = li.xpath('.//div[@class="info"]//div[@class="bd"]//p[1]/text()').extract()
+            introduce = []
             for content in contents:
-                introduce = "".join(content.split())
+                introduce.append(' '.join(content.split()))
             item['introduce'] = introduce
             item['star'] = li.xpath('.//span[@class="rating_num"]/text()').extract_first()
             item['evaluate'] = li.xpath('.//div[@class="star"]//span[4]/text()').extract_first()
             item['describe'] = li.xpath('.//p[@class="quote"]/span/text()').extract_first()
+            # 电影海报/封面
+            poster_url = li.xpath('.//div[@class="pic"]//img/@src').extract_first()
+            item['file_urls'] = [poster_url]
             # yield item to pipelines, 进行数据的清洗或存储
             yield item
 
